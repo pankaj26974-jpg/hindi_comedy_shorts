@@ -1,47 +1,113 @@
 <!doctype html>
-<html lang="hi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#111827"><title>Hindi Comedy Shorts Studio V3</title>
+<html lang="hi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#111827">
+<title>Hindi Comedy Shorts Studio V4</title>
 <style>
 :root{color-scheme:dark;--bg:#0b1020;--panel:#151d31;--line:#2a3652;--accent:#ffbd59;--text:#f7f8fc;--muted:#aab5ca}
 *{box-sizing:border-box}body{margin:0;background:linear-gradient(160deg,#111a31,#090d18 65%);font-family:system-ui,-apple-system,"Noto Sans Devanagari",sans-serif;color:var(--text)}
-main{max-width:760px;margin:auto;padding:18px 14px 40px}.hero{padding:18px 4px 12px}.tag{color:var(--accent);font-weight:800;font-size:12px;letter-spacing:1px}
-h1{font-size:28px;line-height:1.15;margin:8px 0}.sub{color:var(--muted);font-size:14px;line-height:1.5}
-.panel{background:rgba(21,29,49,.96);border:1px solid var(--line);border-radius:18px;padding:16px;margin:12px 0}
+main{max-width:820px;margin:auto;padding:18px 14px 42px}.hero{padding:18px 4px 12px}.tag{color:var(--accent);font-weight:800;font-size:12px;letter-spacing:1px}
+h1{font-size:27px;line-height:1.15;margin:8px 0}.sub,.hint{color:var(--muted);font-size:13px;line-height:1.55}
+.panel{background:rgba(21,29,49,.96);border:1px solid var(--line);border-radius:18px;padding:15px;margin:12px 0}
 label{display:block;font-weight:700;font-size:14px;margin:10px 0 6px}
-select,button{font:inherit;border-radius:12px}select{width:100%;padding:12px;background:#0c1426;color:white;border:1px solid #3a4968}
-.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}button{border:0;padding:12px 14px;font-weight:800;cursor:pointer}
-.primary{background:var(--accent);color:#1b1b1b;width:100%;margin-top:14px}.secondary{background:#263653;color:white;border:1px solid #405273}
-.actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:12px}.output{white-space:pre-wrap;line-height:1.65;font-size:15px;color:#f5f6fb}
-.small{font-size:12px;color:var(--muted);line-height:1.5}#stageWrap{display:flex;justify-content:center;margin:12px 0}
+select,input[type=file],textarea{width:100%;padding:11px;background:#0c1426;color:white;border:1px solid #3a4968;border-radius:11px;font:inherit}
+textarea{min-height:86px;resize:vertical}.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+button{font:inherit;border:0;border-radius:12px;padding:12px 14px;font-weight:800;cursor:pointer}
+.primary{background:var(--accent);color:#1b1b1b;width:100%;margin-top:13px}.secondary{background:#263653;color:white;border:1px solid #405273}
+.danger{background:#642b38;color:#fff}.actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:11px}
+.output{white-space:pre-wrap;line-height:1.6;font-size:14px}.small{font-size:12px;color:var(--muted);line-height:1.5}
+.status{padding:10px;border-radius:10px;background:#0d172a;color:#c7d5ee;font-size:13px;margin-top:10px}
+.scene{border:1px solid #34435f;border-radius:13px;padding:11px;margin:10px 0;background:#101a2d}
+.sceneHead{display:flex;justify-content:space-between;align-items:center;gap:8px;font-weight:800;font-size:13px}
+.preview{width:100%;max-height:210px;object-fit:contain;background:#0a1020;border-radius:9px;margin-top:8px}
 canvas{width:min(100%,360px);height:auto;aspect-ratio:9/16;border-radius:16px;border:1px solid #52617b;background:#101827}
-.status{padding:10px;border-radius:10px;background:#0d172a;color:#c7d5ee;font-size:13px;margin-top:10px}progress{width:100%;height:10px;accent-color:var(--accent)}
-hr{border:0;border-top:1px solid var(--line);margin:14px 0}@media(max-width:420px){h1{font-size:25px}.row{grid-template-columns:1fr}}
-</style></head><body><main>
-<div class="hero"><div class="tag">FREE ANDROID PROTOTYPE · VERSION 3</div><h1>Hindi Comedy Shorts Studio 😂</h1><div class="sub">अपनी छोटी हिंदी कॉमेडी वीडियो बनाइए — स्क्रिप्ट, सीन और 9:16 एनिमेटेड वीडियो एक ही जगह।</div></div>
-<section class="panel"><div class="row"><div><label for="topic">कॉमेडी का विषय</label><select id="topic"><option value="random">Random मिक्स</option><option value="family">Family Comedy</option><option value="office">Office Comedy</option><option value="tech">Mobile / Tech</option><option value="daily">Daily Life</option><option value="school">School / College</option><option value="shop">दुकान / ग्राहक</option></select></div><div><label for="style">वीडियो स्टाइल</label><select id="style"><option value="mixed">Mixed Comedy</option><option value="cartoon">Cartoon Cards</option><option value="meme">Meme Style</option><option value="cinematic">Cinematic Text</option></select></div></div>
-<label for="duration">वीडियो अवधि</label><select id="duration"><option value="12">12 सेकंड (टेस्ट)</option><option value="20">20 सेकंड</option><option value="30">30 सेकंड</option></select><button class="primary" id="generate">✨ Generate Comedy Short</button></section>
-<section class="panel"><h3>आपकी हिंदी स्क्रिप्ट</h3><div id="script" class="output">पहले Generate Comedy Short दबाएँ।</div><div class="actions"><button class="secondary" id="copy">स्क्रिप्ट कॉपी करें</button><button class="secondary" id="speak">🔊 आवाज़ सुनें</button></div><hr><h3>सीन प्लान</h3><div id="scenes" class="output small">स्क्रिप्ट बनने के बाद सीन यहाँ दिखेंगे।</div><div class="actions"><button class="secondary" id="downloadTxt">TXT डाउनलोड</button><button class="secondary" id="stopVoice">आवाज़ रोकें</button></div></section>
-<section class="panel"><h3>वीडियो रेंडर करें</h3><div class="small">यह रेंडरर रंगीन बैकग्राउंड, हिंदी कैप्शन और इमोजी के साथ 9:16 वीडियो बनाता है। रेंडर के दौरान पेज खुला रखें।</div><div id="stageWrap"><canvas id="canvas" width="540" height="960"></canvas></div><button class="primary" id="render">🎬 Render & Save Video</button><progress id="progress" value="0" max="100"></progress><div id="status" class="status">पहले स्क्रिप्ट Generate करें, फिर वीडियो Render करें।</div>
-<p class="small">नोट: इस संस्करण में AI से बने असली किरदार/फोटो शामिल नहीं हैं। वीडियो WebM फॉर्मेट में सेव होगा; MP4 नहीं। ब्राउज़र सपोर्ट डिवाइस के अनुसार बदल सकता है। स्क्रिप्ट की आवाज़ अलग से सुनाई जाती है और वीडियो में ऑडियो embed नहीं होता।</p></section>
-<div class="small">V3 prototype · स्क्रिप्ट और रेंडरर ऑफलाइन चल सकते हैं। Hindi voice के लिए आपके Android में Hindi text-to-speech voice उपलब्ध होना ज़रूरी है।</div>
-</main><script>
+#stage{display:flex;justify-content:center;margin:12px 0}progress{width:100%;height:10px;accent-color:var(--accent)}
+.badge{display:inline-block;padding:4px 8px;border-radius:99px;background:#263653;color:#d9e6ff;font-size:11px}
+hr{border:0;border-top:1px solid var(--line);margin:14px 0}
+@media(max-width:430px){.row{grid-template-columns:1fr}h1{font-size:24px}}
+</style></head>
+<body><main>
+<header class="hero"><div class="tag">FREE ANDROID PROTOTYPE · VERSION 4</div><h1>Hindi Comedy Shorts Studio 😂</h1><div class="sub">Mixed Comedy: स्क्रिप्ट + अपने सीन की तस्वीरें + अपनी रिकॉर्ड की हुई आवाज़ + 9:16 वीडियो एक्सपोर्ट।</div></header>
+
+<section class="panel">
+ <div class="row">
+  <div><label for="topic">कॉमेडी का विषय</label><select id="topic"><option value="random">Random मिक्स</option><option value="family">Family Comedy</option><option value="office">Office Comedy</option><option value="tech">Mobile / Tech</option><option value="daily">Daily Life</option><option value="school">School / College</option><option value="shop">दुकान / ग्राहक</option></select></div>
+  <div><label for="look">Mixed visual mood</label><select id="look"><option value="mix">Mixed (Cartoon + Meme + Realistic)</option><option value="cartoon">3D Cartoon</option><option value="real">Realistic</option><option value="meme">Meme style</option></select></div>
+ </div>
+ <label for="duration">वीडियो अवधि</label><select id="duration"><option value="15">15 सेकंड (टेस्ट)</option><option value="25">25 सेकंड</option><option value="35">35 सेकंड</option></select>
+ <button class="primary" id="generate">✨ Generate Mixed Comedy Short</button>
+</section>
+
+<section class="panel">
+ <h3>1. हिंदी स्क्रिप्ट और सीन</h3><div id="script" class="output">Generate दबाकर शुरू करें।</div>
+ <div class="actions"><button class="secondary" id="copy">स्क्रिप्ट कॉपी</button><button class="secondary" id="tts">🔊 TTS Preview</button></div>
+ <div id="scenes"></div>
+ <div class="hint">हर सीन के लिए आप अपनी तस्वीर अपलोड कर सकते हैं। ये तस्वीर वीडियो में उस सीन के बैकग्राउंड/विजुअल के रूप में दिखाई देगी।</div>
+ <div class="actions"><button class="secondary" id="prompts">Image prompts दिखाएँ</button><button class="secondary" id="txt">स्क्रिप्ट + prompts TXT</button></div>
+ <div id="promptBox" class="output small"></div>
+</section>
+
+<section class="panel">
+ <h3>2. अपनी हिंदी आवाज़ रिकॉर्ड करें <span class="badge">Free</span></h3>
+ <div class="hint">रिकॉर्डिंग के लिए माइक्रोफोन की अनुमति दें। आप पूरी स्क्रिप्ट बोलें। रिकॉर्डिंग वीडियो के साथ जोड़ी जाएगी। TTS Preview केवल सुनने के लिए है; उसे एक्सपोर्ट में शामिल नहीं किया जाता।</div>
+ <div class="actions"><button class="primary" id="record">🎙️ Start Recording</button><button class="secondary danger" id="stopRecord" disabled>Stop Recording</button></div>
+ <div id="audioStatus" class="status">अभी कोई आवाज़ रिकॉर्ड नहीं हुई।</div>
+ <audio id="audioPreview" controls style="width:100%;margin-top:10px;display:none"></audio>
+</section>
+
+<section class="panel">
+ <h3>3. 9:16 वीडियो बनाइए</h3>
+ <div class="hint">हर सीन की तस्वीर और कैप्शन वीडियो में दिखेंगे। रिकॉर्ड की हुई आवाज़ उपलब्ध होने पर वीडियो में जोड़ी जाएगी।</div>
+ <div id="stage"><canvas id="canvas" width="540" height="960"></canvas></div>
+ <button class="primary" id="render">🎬 Render & Save Video</button>
+ <progress id="progress" value="0" max="100"></progress>
+ <div id="status" class="status">पहले स्क्रिप्ट Generate करें।</div>
+ <p class="small">एक्सपोर्ट WebM फॉर्मेट में होगा (MP4 नहीं)। ब्राउज़र के अनुसार रिकॉर्डिंग/ऑडियो सपोर्ट बदल सकता है। पेज खुला रखें।</p>
+</section>
+<div class="small">V4 prototype · इसमें बिल्ट-इन AI image generation नहीं है। AI visuals के लिए मुफ्त इमेज टूल से तस्वीर बनाकर हर सीन में अपलोड करें।</div>
+</main>
+<script>
 const $=id=>document.getElementById(id);
-const banks={
-family:[["मम्मी: फोन नीचे रखो, आँखें खराब हो जाएँगी।","बेटा: मम्मी, फोन में ही तो डॉक्टर की सलाह देख रहा हूँ।","मम्मी: अच्छा? तो डॉक्टर से बोलो, बर्तन भी वही धो दे!"],["पापा: घर में मेरी चलती है!","मम्मी: अच्छा, तो आज सब्ज़ी आप बना लो।","पापा: मेरा मतलब… मेरी सलाह चलती है, मैं नहीं!"]],
+const bank={
+family:[["मम्मी: फोन नीचे रखो, आँखें खराब हो जाएँगी।","बेटा: मम्मी, फोन में ही डॉक्टर की सलाह देख रहा हूँ।","मम्मी: अच्छा? डॉक्टर से बोलो, बर्तन भी वही धो दे!"],["पापा: घर में मेरी चलती है!","मम्मी: अच्छा, आज सब्ज़ी आप बना लो।","पापा: मेरा मतलब… मेरी सलाह चलती है, मैं नहीं!"]],
 office:[["बॉस: तुम ऑफिस देर से क्यों आए?","कर्मचारी: सर, सपने में मीटिंग चल रही थी।","बॉस: तो जल्दी क्यों नहीं उठे?","कर्मचारी: सर, आपकी बात खत्म ही नहीं हो रही थी!"],["बॉस: काम में फोकस कहाँ है?","कर्मचारी: सर, फोकस तो है… बस सैलरी पर ज़ूम नहीं हो रहा!"]],
-tech:[["दोस्त: तुम्हारा फोन इतना स्लो क्यों है?","मैं: इसमें बहुत यादें हैं।","दोस्त: कितनी?","मैं: इतनी कि हर ऐप खुलने से पहले पुरानी यादें ताज़ा करता है!"],["मम्मी: ऑनलाइन क्या पढ़ रहे हो?","बेटा: टेक्नोलॉजी।","मम्मी: अच्छा, फिर रोटी ऑनलाइन बना दे!"]],
-daily:[["दोस्त: आज से मैं फिटनेस शुरू कर रहा हूँ।","दूसरा: बहुत बढ़िया! जिम जा रहे हो?","पहला: नहीं, जिम के सामने से रोज़ पैदल निकलूँगा। शुरुआत तो है!"],["मैंने अलार्म 5 बजे का लगाया।","अलार्म बजा, मैंने बंद किया और बोला…","आज इसे भी आराम की ज़रूरत है!"]],
-school:[["टीचर: बताओ, सबसे तेज़ क्या चलता है?","स्टूडेंट: छुट्टी की खबर, मैम!","टीचर: और सबसे धीमा?","स्टूडेंट: छुट्टी के बाद सोमवार!"],["टीचर: होमवर्क कहाँ है?","स्टूडेंट: मैम, क्लाउड में सेव है।","टीचर: दिखाओ।","स्टूडेंट: इंटरनेट नहीं चल रहा, मैम!"]],
-shop:[["ग्राहक: भाई, कुछ सस्ता दिखाओ।","दुकानदार: जी, ये देखिए।","ग्राहक: इससे भी सस्ता?","दुकानदार: फिर तो आपको मेरी दुकान के बाहर से ही देखना पड़ेगा!"],["ग्राहक: ये चीज़ टिकाऊ है?","दुकानदार: बिल्कुल!","ग्राहक: कितने साल चलेगी?","दुकानदार: आप पैसे देंगे तब तक तो पक्की!"]]};
-const emoji={family:"🏠😂",office:"💼😅",tech:"📱🤯",daily:"😎🤣",school:"🎒😂",shop:"🛍️😆",random:"🤣🎭"};
-const colors=[["#25114a","#6b2d91"],["#092c3d","#176b87"],["#4b1b25","#9b3d45"],["#163d32","#28765a"],["#3d2b0e","#98651d"]];let current=null;
-function drawFrame(text,index,em){const c=$("canvas"),ctx=c.getContext("2d"),pal=colors[index%colors.length];const g=ctx.createLinearGradient(0,0,540,960);g.addColorStop(0,pal[0]);g.addColorStop(1,pal[1]);ctx.fillStyle=g;ctx.fillRect(0,0,540,960);ctx.fillStyle="rgba(255,255,255,.12)";ctx.beginPath();ctx.arc(270,300,190,0,Math.PI*2);ctx.fill();ctx.textAlign="center";ctx.fillStyle="#ffd36e";ctx.font="bold 34px sans-serif";ctx.fillText("HINDI COMEDY",270,105);ctx.font="92px sans-serif";ctx.fillText(em||"😂🤣",270,285);ctx.fillStyle="#fff";ctx.font="bold 43px sans-serif";let words=text.split(/\s+/),lines=[],line="";for(const w of words){let test=line?line+" "+w:w;if(ctx.measureText(test).width>440){lines.push(line);line=w}else line=test}if(line)lines.push(line);let lh=60,start=470-(lines.length*lh)/2;lines.forEach((l,i)=>ctx.fillText(l,270,start+i*lh));ctx.fillStyle="rgba(255,255,255,.75)";ctx.font="24px sans-serif";ctx.fillText("LIKE • SHARE • FOLLOW",270,875)}
-function make(){let t=$("topic").value,key=t==="random"?["family","office","tech","daily","school","shop"][Math.floor(Math.random()*6)]:t;let arr=banks[key],lines=arr[Math.floor(Math.random()*arr.length)].slice();if(lines.length<4)lines.push("और तभी असली ट्विस्ट आया…","दोस्तों, आपकी ज़िंदगी में भी ऐसा होता है क्या? 😂");current={key,lines,style:$("style").value,duration:+$("duration").value};$("script").textContent=lines.join("\n\n");$("scenes").textContent=lines.map((x,i)=>`सीन ${i+1}: ${x}`).join("\n\n");$("status").textContent="स्क्रिप्ट तैयार है। अब Render & Save Video दबाएँ।";drawFrame("आपकी कॉमेडी शुरू होने वाली है!",0,emoji[key])}
-function sleep(ms){return new Promise(r=>setTimeout(r,ms))}
+tech:[["दोस्त: तुम्हारा फोन इतना स्लो क्यों है?","मैं: इसमें बहुत यादें हैं।","दोस्त: कितनी?","मैं: हर ऐप खुलने से पहले पुरानी यादें ताज़ा करता है!"],["मम्मी: ऑनलाइन क्या पढ़ रहे हो?","बेटा: टेक्नोलॉजी।","मम्मी: अच्छा, फिर रोटी ऑनलाइन बना दे!"]],
+daily:[["दोस्त: आज से फिटनेस शुरू कर रहा हूँ।","दूसरा: जिम जा रहे हो?","पहला: नहीं, जिम के सामने से रोज़ पैदल निकलूँगा। शुरुआत तो है!"],["मैंने अलार्म 5 बजे का लगाया।","अलार्म बजा, मैंने बंद किया और बोला…","आज इसे भी आराम की ज़रूरत है!"]],
+school:[["टीचर: सबसे तेज़ क्या चलता है?","स्टूडेंट: छुट्टी की खबर, मैम!","टीचर: सबसे धीमा?","स्टूडेंट: छुट्टी के बाद सोमवार!"],["टीचर: होमवर्क कहाँ है?","स्टूडेंट: मैम, क्लाउड में सेव है।","टीचर: दिखाओ।","स्टूडेंट: इंटरनेट नहीं चल रहा, मैम!"]],
+shop:[["ग्राहक: भाई, कुछ सस्ता दिखाओ।","दुकानदार: जी, ये देखिए।","ग्राहक: इससे भी सस्ता?","दुकानदार: फिर तो दुकान के बाहर से ही देखना पड़ेगा!"],["ग्राहक: ये चीज़ टिकाऊ है?","दुकानदार: बिल्कुल!","ग्राहक: कितने साल चलेगी?","दुकानदार: आप पैसे देंगे तब तक तो पक्की!"]]};
+const emoji={family:"🏠😂",office:"💼😅",tech:"📱🤯",daily:"😎🤣",school:"🎒😂",shop:"🛍️😆"};
+const prompts={
+family:"Vertical 9:16 funny Indian family living room scene, expressive 3D cartoon mother and adult son, warm colorful lighting, no text, comedy reaction",
+office:"Vertical 9:16 humorous Indian office scene, expressive office worker and strict boss, modern desk, cinematic realistic-comedy look, no text",
+tech:"Vertical 9:16 funny smartphone addiction scene, expressive young Indian character holding a phone, vibrant 3D cartoon style, no text",
+daily:"Vertical 9:16 relatable everyday Indian comedy moment, expressive character, humorous body language, colorful cinematic lighting, no text",
+school:"Vertical 9:16 funny Indian classroom scene, teacher and student with exaggerated expressions, 3D animated comedy, no text",
+shop:"Vertical 9:16 funny Indian shopkeeper and customer bargaining scene, expressive faces, colorful realistic cartoon hybrid, no text"};
+const palettes=[["#25114a","#6b2d91"],["#092c3d","#176b87"],["#4b1b25","#9b3d45"],["#163d32","#28765a"],["#3d2b0e","#98651d"]];
+let project=null,recordedBlob=null,recordedUrl=null,recorder=null,recStream=null,images=[];
+function chooseStyle(){let s=$("look").value;return s==="mix"?["3D cartoon","realistic comedy","meme illustration"]:s==="cartoon"?["3D cartoon"]:s==="real"?["realistic comedy"]:["meme illustration"]}
+function make(){let t=$("topic").value,key=t==="random"?Object.keys(bank)[Math.floor(Math.random()*6)]:t;let options=bank[key],lines=options[Math.floor(Math.random()*options.length)].slice();if(lines.length<4)lines.push("और तभी असली ट्विस्ट आया…");project={key,lines,duration:+$("duration").value};images=lines.map(()=>null);$("script").textContent=lines.join("\\n\\n");renderSceneInputs();$("status").textContent="स्क्रिप्ट तैयार। अब हर सीन की तस्वीर अपलोड करें और अपनी आवाज़ रिकॉर्ड करें।";draw(0)}
+function renderSceneInputs(){let host=$("scenes");host.innerHTML="";project.lines.forEach((line,i)=>{let box=document.createElement("div");box.className="scene";let head=document.createElement("div");head.className="sceneHead";head.textContent=`सीन ${i+1}`;let txt=document.createElement("div");txt.className="small";txt.textContent=line;let inp=document.createElement("input");inp.type="file";inp.accept="image/*";inp.setAttribute("aria-label",`सीन ${i+1} की तस्वीर`);let img=document.createElement("img");img.className="preview";img.style.display="none";inp.onchange=()=>{let f=inp.files&&inp.files[0];if(!f)return;if(f.size>8*1024*1024){alert("कृपया 8 MB से छोटी तस्वीर चुनें।");inp.value="";return}let url=URL.createObjectURL(f);images[i]=new Image();images[i].onload=()=>{img.src=url;img.style.display="block"};images[i].src=url};box.append(head,txt,inp,img);host.appendChild(box)})}
+function draw(i){let c=$("canvas"),x=c.getContext("2d"),pal=palettes[i%palettes.length];let grad=x.createLinearGradient(0,0,540,960);grad.addColorStop(0,pal[0]);grad.addColorStop(1,pal[1]);x.fillStyle=grad;x.fillRect(0,0,540,960);let im=images[i];if(im){let scale=Math.max(540/im.width,650/im.height),w=im.width*scale,h=im.height*scale;x.globalAlpha=.83;x.drawImage(im,(540-w)/2,130+(650-h)/2,w,h);x.globalAlpha=1;x.fillStyle="rgba(0,0,0,.45)";x.fillRect(0,0,540,960)}else{x.fillStyle="rgba(255,255,255,.12)";x.beginPath();x.arc(270,330,190,0,Math.PI*2);x.fill();x.font="100px sans-serif";x.textAlign="center";x.fillText(emoji[project?.key]||"😂🤣",270,360)}
+x.textAlign="center";x.fillStyle="#ffd36e";x.font="bold 32px sans-serif";x.fillText("HINDI COMEDY",270,80);x.fillStyle="#fff";x.font="bold 39px sans-serif";let text=project?.lines[i]||"आपकी कॉमेडी शुरू होने वाली है!";let words=text.split(/\\s+/),lines=[],line="";for(let w of words){let test=line?line+" "+w:w;if(x.measureText(test).width>455){lines.push(line);line=w}else line=test}if(line)lines.push(line);let lh=56,start=690-(lines.length*lh)/2;x.fillStyle="rgba(0,0,0,.65)";x.fillRect(22,start-55,496,lines.length*lh+95);x.fillStyle="#fff";lines.forEach((l,j)=>x.fillText(l,270,start+j*lh));x.font="22px sans-serif";x.fillStyle="#ffd36e";x.fillText("LIKE • SHARE • FOLLOW",270,915)}
 $("generate").onclick=make;
-$("copy").onclick=async()=>{if(!current)return alert("पहले स्क्रिप्ट Generate करें।");try{await navigator.clipboard.writeText(current.lines.join("\n\n"));$("status").textContent="स्क्रिप्ट कॉपी हो गई।"}catch(e){$("status").textContent="कॉपी सपोर्ट नहीं हुआ; स्क्रिप्ट को दबाकर कॉपी करें।"}};
-$("speak").onclick=()=>{if(!current)return alert("पहले स्क्रिप्ट Generate करें।");if(!("speechSynthesis"in window))return alert("इस ब्राउज़र में आवाज़ सपोर्ट नहीं है।");speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(current.lines.join("। "));u.lang="hi-IN";u.rate=.92;speechSynthesis.speak(u)};
-$("stopVoice").onclick=()=>{if("speechSynthesis"in window)speechSynthesis.cancel()};
-$("downloadTxt").onclick=()=>{if(!current)return alert("पहले स्क्रिप्ट Generate करें।");let blob=new Blob([current.lines.join("\n\n")],{type:"text/plain;charset=utf-8"});let a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="hindi-comedy-script.txt";a.click();URL.revokeObjectURL(a.href)};
-$("render").onclick=async()=>{if(!current)return alert("पहले Generate Comedy Short दबाएँ।");const canvas=$("canvas"),status=$("status"),prog=$("progress");if(!canvas.captureStream||!window.MediaRecorder){status.textContent="आपके ब्राउज़र में वीडियो रिकॉर्डिंग सपोर्ट नहीं है। Chrome का नया संस्करण आज़माएँ।";return}let mime=["video/webm;codecs=vp9","video/webm;codecs=vp8","video/webm"].find(x=>MediaRecorder.isTypeSupported(x));if(!mime){status.textContent="इस ब्राउज़र में WebM रिकॉर्डिंग सपोर्ट नहीं मिली।";return}const stream=canvas.captureStream(24);let recorder;try{recorder=new MediaRecorder(stream,{mimeType:mime,videoBitsPerSecond:2500000})}catch(e){status.textContent="रिकॉर्डर शुरू नहीं हो पाया: "+e.message;return}let chunks=[];recorder.ondataavailable=e=>{if(e.data&&e.data.size)chunks.push(e.data)};const done=new Promise(resolve=>recorder.onstop=resolve);recorder.start();let frames=current.lines,each=current.duration*1000/frames.length;status.textContent="वीडियो बन रहा है… पेज बंद न करें।";prog.value=0;for(let i=0;i<frames.length;i++){drawFrame(frames[i],i,emoji[current.key]);await sleep(each);prog.value=Math.round((i+1)/frames.length*100)}recorder.stop();await done;stream.getTracks().forEach(t=>t.stop());let blob=new Blob(chunks,{type:"video/webm"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="hindi-comedy-short-v3.webm";document.body.appendChild(a);a.click();a.remove();status.textContent=`वीडियो तैयार! फ़ाइल लगभग ${(blob.size/1024/1024).toFixed(1)} MB है। Downloads फ़ोल्डर में देखें।`;setTimeout(()=>URL.revokeObjectURL(url),60000)};
+$("copy").onclick=async()=>{if(!project)return alert("पहले स्क्रिप्ट बनाएं");try{await navigator.clipboard.writeText(project.lines.join("\\n\\n"));$("status").textContent="स्क्रिप्ट कॉपी हो गई।"}catch(e){alert("स्क्रिप्ट को दबाकर कॉपी करें।")}};
+$("tts").onclick=()=>{if(!project)return alert("पहले स्क्रिप्ट बनाएं");if(!window.speechSynthesis)return alert("TTS उपलब्ध नहीं है");speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(project.lines.join("। "));u.lang="hi-IN";speechSynthesis.speak(u)};
+$("prompts").onclick=()=>{if(!project)return alert("पहले स्क्रिप्ट बनाएं");let p=prompts[project.key];$("promptBox").textContent="Suggested image prompt (English usually works better):\\n"+p+"\\n\\nVisual mood: "+chooseStyle().join(" / ")+"\\n\\nहर सीन के लिए prompt में scene का dialogue/action बदलकर अलग तस्वीर बनाएं।"};
+$("txt").onclick=()=>{if(!project)return alert("पहले स्क्रिप्ट बनाएं");let s="SCRIPT\\n"+project.lines.join("\\n\\n")+"\\n\\nIMAGE PROMPT\\n"+prompts[project.key];let b=new Blob([s],{type:"text/plain;charset=utf-8"}),u=URL.createObjectURL(b),a=document.createElement("a");a.href=u;a.download="hindi-comedy-v4-script-prompts.txt";a.click();URL.revokeObjectURL(u)};
+$("record").onclick=async()=>{try{if(!navigator.mediaDevices?.getUserMedia||!window.MediaRecorder)throw Error("इस ब्राउज़र में माइक्रोफोन रिकॉर्डिंग उपलब्ध नहीं है।");recStream=await navigator.mediaDevices.getUserMedia({audio:true});let mt=["audio/webm;codecs=opus","audio/webm"].find(t=>MediaRecorder.isTypeSupported(t));recorder=new MediaRecorder(recStream,mt?{mimeType:mt}:undefined);let parts=[];recorder.ondataavailable=e=>{if(e.data.size)parts.push(e.data)};recorder.onstop=()=>{recordedBlob=new Blob(parts,{type:recorder.mimeType||"audio/webm"});if(recordedUrl)URL.revokeObjectURL(recordedUrl);recordedUrl=URL.createObjectURL(recordedBlob);$("audioPreview").src=recordedUrl;$("audioPreview").style.display="block";$("audioStatus").textContent="रिकॉर्डिंग तैयार। Render करते समय यह आवाज़ वीडियो में जोड़ी जाएगी।";recStream.getTracks().forEach(t=>t.stop());$("record").disabled=false;$("stopRecord").disabled=true};recorder.start();$("record").disabled=true;$("stopRecord").disabled=false;$("audioStatus").textContent="रिकॉर्डिंग चल रही है… पूरी स्क्रिप्ट बोलें।"}catch(e){$("audioStatus").textContent="माइक्रोफोन शुरू नहीं हुआ: "+e.message}};
+$("stopRecord").onclick=()=>{if(recorder&&recorder.state!=="inactive")recorder.stop()};
+$("render").onclick=async()=>{if(!project)return alert("पहले स्क्रिप्ट बनाएं");let c=$("canvas"),status=$("status"),prog=$("progress");if(!c.captureStream||!window.MediaRecorder){status.textContent="Canvas video recording सपोर्ट नहीं मिला। Chrome अपडेट करें।";return}let mime=["video/webm;codecs=vp9","video/webm;codecs=vp8","video/webm"].find(t=>MediaRecorder.isTypeSupported(t));if(!mime){status.textContent="WebM export उपलब्ध नहीं है।";return}
+let vstream=c.captureStream(24),tracks=[...vstream.getVideoTracks()],audioCtx=null,source=null,dest=null;
+try{if(recordedBlob){let audio=new Audio();audio.src=recordedUrl;audio.crossOrigin="anonymous";audioCtx=new (window.AudioContext||window.webkitAudioContext)();await audioCtx.resume();source=audioCtx.createMediaElementSource(audio);dest=audioCtx.createMediaStreamDestination();source.connect(dest);source.connect(audioCtx.destination);tracks.push(...dest.stream.getAudioTracks());window._exportAudio=audio;}}
+catch(e){status.textContent="आवाज़ वीडियो में नहीं जुड़ सकी; बिना आवाज़ वीडियो बनाने की कोशिश जारी है।"}
+let combined=new MediaStream(tracks),rec;try{rec=new MediaRecorder(combined,{mimeType:mime,videoBitsPerSecond:2500000})}catch(e){status.textContent="Recorder error: "+e.message;return}
+let chunks=[];rec.ondataavailable=e=>{if(e.data.size)chunks.push(e.data)};let stopped=new Promise(r=>rec.onstop=r);rec.start();
+let audio=window._exportAudio;if(audio){audio.currentTime=0;audio.play().catch(()=>{});}
+let count=project.lines.length,per=project.duration*1000/count;status.textContent=recordedBlob?"वीडियो और आवाज़ रेंडर हो रहे हैं… पेज खुला रखें।":"वीडियो रेंडर हो रहा है… पेज खुला रखें।";prog.value=0;
+for(let i=0;i<count;i++){draw(i);await new Promise(r=>setTimeout(r,per));prog.value=Math.round((i+1)/count*100)}
+if(audio){audio.pause();audio.currentTime=0}rec.stop();await stopped;vstream.getTracks().forEach(t=>t.stop());if(audioCtx)await audioCtx.close();let blob=new Blob(chunks,{type:mime}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="hindi-comedy-short-v4.webm";document.body.appendChild(a);a.click();a.remove();status.textContent=`वीडियो डाउनलोड शुरू हुआ (${(blob.size/1048576).toFixed(1)} MB)। Downloads फ़ोल्डर देखें।`;setTimeout(()=>URL.revokeObjectURL(url),60000)};
 make();
 </script></body></html>
